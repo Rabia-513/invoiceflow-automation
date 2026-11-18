@@ -1,0 +1,1977 @@
+{
+    "name": "TAW - Stripe to Accounting Automation",
+    "flow": [
+        {
+            "id": 1,
+            "module": "stripe:watchEvents",
+            "version": 1,
+            "parameters": {
+                "__IMTHOOK__": 3006580
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 150
+                },
+                "setupValidation": {
+                    "result": {
+                        "valid": true,
+                        "fields": []
+                    },
+                    "version": 1,
+                    "configuration": "b97d3ef95ac6cd5e"
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTHOOK__": {
+                            "data": {
+                                "editable": "false"
+                            },
+                            "label": "Stripe Payment Success - TAW"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTHOOK__",
+                        "type": "hook:stripe2",
+                        "label": "Webhook",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "created",
+                        "type": "date",
+                        "label": "Created"
+                    },
+                    {
+                        "name": "event_type",
+                        "type": "text",
+                        "label": "Event Type"
+                    },
+                    {
+                        "name": "event_id",
+                        "type": "text",
+                        "label": "Event ID"
+                    },
+                    {
+                        "name": "object",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "Payment Intent ID"
+                            },
+                            {
+                                "name": "object",
+                                "type": "text",
+                                "label": "Object"
+                            },
+                            {
+                                "name": "amount",
+                                "type": "number",
+                                "label": "Amount"
+                            },
+                            {
+                                "name": "amount_capturable",
+                                "type": "number",
+                                "label": "Amount Capturable"
+                            },
+                            {
+                                "name": "amount_received",
+                                "type": "number",
+                                "label": "Amount Received"
+                            },
+                            {
+                                "name": "application",
+                                "type": "text",
+                                "label": "Application"
+                            },
+                            {
+                                "name": "application_fee_amount",
+                                "type": "number",
+                                "label": "Application Fee Amount"
+                            },
+                            {
+                                "name": "canceled_at",
+                                "type": "date",
+                                "label": "Canceled At"
+                            },
+                            {
+                                "name": "cancellation_reason",
+                                "type": "text",
+                                "label": "Cancellation Reason"
+                            },
+                            {
+                                "name": "capture_method",
+                                "type": "text",
+                                "label": "Capture Method"
+                            },
+                            {
+                                "name": "charges",
+                                "spec": [
+                                    {
+                                        "name": "object",
+                                        "type": "text",
+                                        "label": "Object"
+                                    },
+                                    {
+                                        "name": "data",
+                                        "type": "array",
+                                        "label": "Data"
+                                    },
+                                    {
+                                        "name": "has_more",
+                                        "type": "boolean",
+                                        "label": "Has More"
+                                    },
+                                    {
+                                        "name": "total_count",
+                                        "type": "number",
+                                        "label": "Total Count"
+                                    },
+                                    {
+                                        "name": "url",
+                                        "type": "text",
+                                        "label": "URL"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Charges"
+                            },
+                            {
+                                "name": "client_secret",
+                                "type": "text",
+                                "label": "Client Secret"
+                            },
+                            {
+                                "name": "confirmation_method",
+                                "type": "text",
+                                "label": "Confirmation Method"
+                            },
+                            {
+                                "name": "created",
+                                "type": "date",
+                                "label": "Created"
+                            },
+                            {
+                                "name": "currency",
+                                "type": "text",
+                                "label": "Currency"
+                            },
+                            {
+                                "name": "customer",
+                                "type": "text",
+                                "label": "Customer"
+                            },
+                            {
+                                "name": "description",
+                                "type": "text",
+                                "label": "Description"
+                            },
+                            {
+                                "name": "invoice",
+                                "type": "text",
+                                "label": "Invoice"
+                            },
+                            {
+                                "name": "last_payment_error",
+                                "type": "text",
+                                "label": "Last Payment Error"
+                            },
+                            {
+                                "name": "livemode",
+                                "type": "boolean",
+                                "label": "Livemode"
+                            },
+                            {
+                                "name": "metadata",
+                                "type": "any",
+                                "label": "Metadata"
+                            },
+                            {
+                                "name": "next_action",
+                                "type": "text",
+                                "label": "Next Action"
+                            },
+                            {
+                                "name": "on_behalf_of",
+                                "type": "text",
+                                "label": "On Behalf Of"
+                            },
+                            {
+                                "name": "payment_method",
+                                "type": "text",
+                                "label": "Payment Method"
+                            },
+                            {
+                                "name": "payment_method_options",
+                                "type": "any",
+                                "label": "Payment Method Options"
+                            },
+                            {
+                                "name": "payment_method_types",
+                                "spec": {
+                                    "type": "text"
+                                },
+                                "type": "array",
+                                "label": "Payment Method Types"
+                            },
+                            {
+                                "name": "receipt_email",
+                                "type": "text",
+                                "label": "Receipt Email"
+                            },
+                            {
+                                "name": "review",
+                                "type": "text",
+                                "label": "Review"
+                            },
+                            {
+                                "name": "setup_future_usage",
+                                "type": "text",
+                                "label": "Setup Future Usage"
+                            },
+                            {
+                                "name": "shipping",
+                                "spec": [
+                                    {
+                                        "name": "address",
+                                        "spec": [
+                                            {
+                                                "name": "city",
+                                                "type": "text",
+                                                "label": "City"
+                                            },
+                                            {
+                                                "name": "country",
+                                                "type": "text",
+                                                "label": "Country"
+                                            },
+                                            {
+                                                "name": "line1",
+                                                "type": "text",
+                                                "label": "Line 1"
+                                            },
+                                            {
+                                                "name": "line2",
+                                                "type": "text",
+                                                "label": "Line 2"
+                                            },
+                                            {
+                                                "name": "postal_code",
+                                                "type": "text",
+                                                "label": "Postal Code"
+                                            },
+                                            {
+                                                "name": "state",
+                                                "type": "text",
+                                                "label": "State"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Address"
+                                    },
+                                    {
+                                        "name": "carrier",
+                                        "type": "text",
+                                        "label": "Carrier"
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Name"
+                                    },
+                                    {
+                                        "name": "phone",
+                                        "type": "text",
+                                        "label": "Phone"
+                                    },
+                                    {
+                                        "name": "tracking_number",
+                                        "type": "text",
+                                        "label": "Tracking Number"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Shipping"
+                            },
+                            {
+                                "name": "source",
+                                "type": "text",
+                                "label": "Source"
+                            },
+                            {
+                                "name": "statement_descriptor",
+                                "type": "text",
+                                "label": "Statement Descriptor"
+                            },
+                            {
+                                "name": "statement_descriptor_suffix",
+                                "type": "text",
+                                "label": "Statement Descriptor Suffix"
+                            },
+                            {
+                                "name": "status",
+                                "type": "text",
+                                "label": "Status"
+                            },
+                            {
+                                "name": "transfer_data",
+                                "spec": [
+                                    {
+                                        "name": "destination",
+                                        "type": "text",
+                                        "label": "Destination"
+                                    },
+                                    {
+                                        "name": "amount",
+                                        "type": "text",
+                                        "label": "Amount"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Transfer Data"
+                            },
+                            {
+                                "name": "transfer_group",
+                                "type": "text",
+                                "label": "Transfer Group"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Object"
+                    },
+                    {
+                        "name": "raw",
+                        "spec": [],
+                        "type": "collection",
+                        "label": "Raw Webhook Data"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "airtable:bulkUpsertRecords",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 12065488
+            },
+            "mapper": {
+                "base": "appkHSvAIeQUYH2xK",
+                "table": "tbl1WmqgxmmMKzo93",
+                "select": "list",
+                "records": [
+                    {
+                        "fld1CYdANC46sFfAR": "{{1.object.amount / \" 100 \"}}",
+                        "fldKVQeKRvihxZUkU": "{{1.object.currency}}",
+                        "fldPSY6LMPzuoYxDp": "{{1.object.receipt_email}}",
+                        "fldYiRJDcI0wHb392": "{{1.object.id}}",
+                        "fldd9OQy2gA84TGQQ": "{{1.object.status}}"
+                    }
+                ],
+                "typecast": false,
+                "useColumnId": false,
+                "fieldsToMergeOn": [
+                    "Payment ID"
+                ]
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 150
+                },
+                "setupValidation": {
+                    "result": {
+                        "valid": true,
+                        "fields": []
+                    },
+                    "version": 1,
+                    "configuration": "44d2be5e0b4b1467"
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "label": "TAW Invoice Automation"
+                        },
+                        "table": {
+                            "label": "Payments"
+                        },
+                        "select": {
+                            "label": "Select from the list"
+                        },
+                        "records": {
+                            "items": [
+                                {
+                                    "fldR40D5DHlwBO57D": {
+                                        "mode": "chose",
+                                        "label": "Empty"
+                                    },
+                                    "fldd9OQy2gA84TGQQ": {
+                                        "mode": "edit"
+                                    }
+                                }
+                            ]
+                        },
+                        "typecast": {
+                            "mode": "chose"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        },
+                        "fieldsToMergeOn": {
+                            "mode": "chose",
+                            "label": [
+                                "Payment ID"
+                            ]
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable3"
+                            },
+                            "label": "TAW Invoice Automation base (User ID: usriZ2ep8L2w9hQRL)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "select",
+                        "type": "select",
+                        "label": "Upsert records in bulk",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "map",
+                                "list"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "typecast",
+                        "type": "boolean",
+                        "label": "Smart links",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "fieldsToMergeOn",
+                        "type": "select",
+                        "label": "Fields to Merge on",
+                        "multiple": true,
+                        "required": true
+                    },
+                    {
+                        "name": "records",
+                        "spec": {
+                            "name": "value",
+                            "spec": [
+                                {
+                                    "name": "fldYiRJDcI0wHb392",
+                                    "type": "text",
+                                    "label": "Payment ID"
+                                },
+                                {
+                                    "name": "fldPSY6LMPzuoYxDp",
+                                    "type": "text",
+                                    "label": "Customer Email"
+                                },
+                                {
+                                    "name": "fld1CYdANC46sFfAR",
+                                    "type": "number",
+                                    "label": "Amount"
+                                },
+                                {
+                                    "name": "fldKVQeKRvihxZUkU",
+                                    "type": "text",
+                                    "label": "Currency"
+                                },
+                                {
+                                    "mode": "edit",
+                                    "name": "fldd9OQy2gA84TGQQ",
+                                    "type": "select",
+                                    "label": "Payment Status",
+                                    "dynamic": true,
+                                    "options": [
+                                        {
+                                            "label": "succeeded",
+                                            "value": "succeeded"
+                                        },
+                                        {
+                                            "label": "failed",
+                                            "value": "failed"
+                                        },
+                                        {
+                                            "label": "pending",
+                                            "value": "pending"
+                                        }
+                                    ],
+                                    "validate": false
+                                },
+                                {
+                                    "mode": "edit",
+                                    "name": "fldR40D5DHlwBO57D",
+                                    "type": "select",
+                                    "label": "Accounting Status",
+                                    "dynamic": true,
+                                    "options": [
+                                        {
+                                            "label": "Pending",
+                                            "value": "Pending"
+                                        },
+                                        {
+                                            "label": "Synced",
+                                            "value": "Synced"
+                                        },
+                                        {
+                                            "label": "Failed",
+                                            "value": "Failed"
+                                        }
+                                    ],
+                                    "validate": false
+                                },
+                                {
+                                    "name": "fld74zkj7alEdziSl",
+                                    "type": "text",
+                                    "label": "Accounting Record ID"
+                                },
+                                {
+                                    "name": "fldSXhLovULW8zpxQ",
+                                    "time": true,
+                                    "type": "date",
+                                    "label": "Created At"
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Record"
+                        },
+                        "type": "array",
+                        "label": "Records",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "__IMTLENGTH__",
+                        "type": "uinteger",
+                        "label": "Total number of bundles"
+                    },
+                    {
+                        "name": "__IMTINDEX__",
+                        "type": "uinteger",
+                        "label": "Bundle order position"
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created time"
+                    },
+                    {
+                        "name": "Payment ID",
+                        "type": "text",
+                        "label": "Payment ID"
+                    },
+                    {
+                        "name": "Customer Email",
+                        "type": "text",
+                        "label": "Customer Email"
+                    },
+                    {
+                        "name": "Amount",
+                        "type": "number",
+                        "label": "Amount"
+                    },
+                    {
+                        "name": "Currency",
+                        "type": "text",
+                        "label": "Currency"
+                    },
+                    {
+                        "name": "Payment Status",
+                        "type": "text",
+                        "label": "Payment Status"
+                    },
+                    {
+                        "name": "Accounting Status",
+                        "type": "text",
+                        "label": "Accounting Status"
+                    },
+                    {
+                        "name": "Accounting Record ID",
+                        "type": "text",
+                        "label": "Accounting Record ID"
+                    },
+                    {
+                        "name": "Created At",
+                        "time": true,
+                        "type": "date",
+                        "label": "Created At"
+                    }
+                ],
+                "advanced": true
+            }
+        },
+        {
+            "id": 10,
+            "module": "airtable:ActionSearchRecords",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 12065488
+            },
+            "mapper": {
+                "base": "appkHSvAIeQUYH2xK",
+                "table": "tbl1WmqgxmmMKzo93",
+                "formula": "{Payment ID} = \"{{1.object.id}}\"",
+                "maxRecords": "1",
+                "useColumnId": false,
+                "formulaField": "formula"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 150
+                },
+                "setupValidation": {
+                    "result": {
+                        "valid": true,
+                        "fields": []
+                    },
+                    "version": 1,
+                    "configuration": "caff867df8a91ea9"
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "mode": "chose",
+                            "label": "TAW Invoice Automation"
+                        },
+                        "sort": {
+                            "mode": "chose"
+                        },
+                        "view": {
+                            "mode": "chose"
+                        },
+                        "table": {
+                            "mode": "chose",
+                            "label": "Payments"
+                        },
+                        "fields": {
+                            "mode": "chose"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        },
+                        "formulaField": {
+                            "mode": "chose",
+                            "label": "Airtable formula"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable3"
+                            },
+                            "label": "TAW Invoice Automation base (User ID: usriZ2ep8L2w9hQRL)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "maxRecords",
+                        "type": "integer",
+                        "label": "Limit"
+                    },
+                    {
+                        "name": "sort",
+                        "spec": [
+                            {
+                                "name": "field",
+                                "type": "select",
+                                "label": "Field",
+                                "dynamic": true,
+                                "options": []
+                            },
+                            {
+                                "name": "direction",
+                                "type": "select",
+                                "label": "Direction",
+                                "options": [
+                                    {
+                                        "label": "Descending",
+                                        "value": "desc"
+                                    },
+                                    {
+                                        "label": "Ascending",
+                                        "value": "asc"
+                                    }
+                                ]
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Sort"
+                    },
+                    {
+                        "name": "view",
+                        "type": "select",
+                        "label": "View"
+                    },
+                    {
+                        "name": "fields",
+                        "type": "select",
+                        "label": "Output fields",
+                        "multiple": true
+                    },
+                    {
+                        "name": "formulaField",
+                        "type": "select",
+                        "label": "Filter type",
+                        "validate": {
+                            "enum": [
+                                "formula",
+                                "simpleFilter"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formula",
+                        "type": "text",
+                        "label": "Formula"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "__IMTLENGTH__",
+                        "type": "uinteger",
+                        "label": "Total number of bundles"
+                    },
+                    {
+                        "name": "__IMTINDEX__",
+                        "type": "uinteger",
+                        "label": "Bundle order position"
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created time"
+                    },
+                    {
+                        "name": "Payment ID",
+                        "type": "text",
+                        "label": "Payment ID"
+                    },
+                    {
+                        "name": "Customer Email",
+                        "type": "text",
+                        "label": "Customer Email"
+                    },
+                    {
+                        "name": "Amount",
+                        "type": "number",
+                        "label": "Amount"
+                    },
+                    {
+                        "name": "Currency",
+                        "type": "text",
+                        "label": "Currency"
+                    },
+                    {
+                        "name": "Payment Status",
+                        "type": "text",
+                        "label": "Payment Status"
+                    },
+                    {
+                        "name": "Accounting Status",
+                        "type": "text",
+                        "label": "Accounting Status"
+                    },
+                    {
+                        "name": "Accounting Record ID",
+                        "type": "text",
+                        "label": "Accounting Record ID"
+                    },
+                    {
+                        "name": "Created At",
+                        "time": true,
+                        "type": "date",
+                        "label": "Created At"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 7,
+            "module": "quickbooks:CreateSalesReceipt",
+            "version": 2,
+            "parameters": {
+                "__IMTCONN__": 12067733
+            },
+            "filter": {
+                "name": "Not Yet Synced.",
+                "conditions": [
+                    [
+                        {
+                            "a": "{{10.`Accounting Record ID`}}",
+                            "o": "notexist"
+                        }
+                    ]
+                ]
+            },
+            "mapper": {
+                "CustomerRef": "1",
+                "Line": [
+                    {
+                        "Amount": "{{10.Amount}}",
+                        "Qty": "1",
+                        "UnitPrice": "{{10.Amount}}",
+                        "ItemRef": "1",
+                        "Description": "TAW Test Service - Stripe Payment",
+                        "TaxCodeRef": "NON"
+                    }
+                ],
+                "ShipFromAddr": {},
+                "TxnTaxDetail": {},
+                "discount": {}
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 150
+                },
+                "setupValidation": {
+                    "version": 1,
+                    "configuration": "ad314ae058d0bdf3",
+                    "result": {
+                        "valid": true,
+                        "fields": []
+                    }
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "label": "TAW QuickBooks Sandbox (Sandbox Company US fb52 (US))",
+                            "data": {
+                                "scoped": "true",
+                                "connection": "quickbooks2"
+                            }
+                        }
+                    },
+                    "expect": {
+                        "CustomerRef": {
+                            "mode": "chose",
+                            "label": "Amy's Bird Sanctuary"
+                        },
+                        "Line": {
+                            "mode": "chose",
+                            "items": [
+                                {
+                                    "ItemRef": {
+                                        "mode": "chose",
+                                        "label": "Services (Service)"
+                                    },
+                                    "TaxCodeRef": {
+                                        "mode": "chose",
+                                        "label": "Non"
+                                    },
+                                    "ClassRef": {
+                                        "mode": "edit"
+                                    }
+                                }
+                            ]
+                        },
+                        "PaymentMethodRef": {
+                            "mode": "chose"
+                        },
+                        "ShipFromAddr": {
+                            "nested": {
+                                "Country": {
+                                    "mode": "chose"
+                                }
+                            }
+                        },
+                        "DepositToAccountRef": {
+                            "mode": "chose"
+                        },
+                        "discount": {
+                            "nested": {
+                                "type": {
+                                    "mode": "chose",
+                                    "label": "Empty"
+                                }
+                            }
+                        },
+                        "DepartmentRef": {
+                            "mode": "edit"
+                        },
+                        "ClassRef": {
+                            "mode": "edit"
+                        },
+                        "EmailStatus": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "ApplyTaxAfterDiscount": {
+                            "mode": "chose"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:quickbooks2,quickbooks",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "CustomerRef",
+                        "type": "select",
+                        "label": "Customer",
+                        "required": true
+                    },
+                    {
+                        "name": "Line",
+                        "type": "array",
+                        "label": "Lines",
+                        "validate": {
+                            "minItems": 1
+                        },
+                        "required": true,
+                        "spec": [
+                            {
+                                "name": "Amount",
+                                "type": "number",
+                                "label": "Amount",
+                                "required": true
+                            },
+                            {
+                                "name": "Qty",
+                                "type": "number",
+                                "label": "Quantity"
+                            },
+                            {
+                                "name": "UnitPrice",
+                                "type": "number",
+                                "label": "Unit price"
+                            },
+                            {
+                                "name": "ItemRef",
+                                "type": "select",
+                                "label": "Item",
+                                "options": [],
+                                "dynamic": true
+                            },
+                            {
+                                "name": "Description",
+                                "type": "text",
+                                "label": "Description"
+                            },
+                            {
+                                "name": "TaxCodeRef",
+                                "type": "select",
+                                "label": "Tax code",
+                                "options": [],
+                                "dynamic": true
+                            },
+                            {
+                                "name": "ClassRef",
+                                "type": "select",
+                                "label": "Class",
+                                "options": [],
+                                "dynamic": true
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentMethodRef",
+                        "type": "select",
+                        "label": "Payment method"
+                    },
+                    {
+                        "name": "ShipFromAddr",
+                        "type": "collection",
+                        "label": "Ship From Address",
+                        "spec": [
+                            {
+                                "name": "Address Line1",
+                                "type": "text",
+                                "label": "Line1"
+                            },
+                            {
+                                "name": "Address Line2",
+                                "type": "text",
+                                "label": "Line2"
+                            },
+                            {
+                                "name": "Country",
+                                "type": "select"
+                            },
+                            {
+                                "name": "City",
+                                "type": "text"
+                            },
+                            {
+                                "name": "CountrySubDivisionCode",
+                                "type": "text",
+                                "label": "Country Sub Division Code"
+                            },
+                            {
+                                "name": "PostalCode",
+                                "type": "text",
+                                "label": "Postal Code"
+                            },
+                            {
+                                "name": "Lat",
+                                "type": "text",
+                                "label": "Latitude"
+                            },
+                            {
+                                "name": "Long",
+                                "type": "text",
+                                "label": "Longitude"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TxnTaxDetail",
+                        "type": "collection",
+                        "label": "Tax Detail",
+                        "spec": [
+                            {
+                                "name": "TxnTaxCodeRef",
+                                "type": "text",
+                                "label": "Tax Code Ref"
+                            },
+                            {
+                                "name": "TotalTax",
+                                "type": "text",
+                                "label": "Total Tax"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DepositToAccountRef",
+                        "type": "select",
+                        "label": "Account"
+                    },
+                    {
+                        "name": "DocNumber",
+                        "type": "text",
+                        "label": "Doc number"
+                    },
+                    {
+                        "name": "discount",
+                        "type": "collection",
+                        "label": "Discount",
+                        "spec": [
+                            {
+                                "name": "type",
+                                "type": "select",
+                                "label": "Type",
+                                "validate": {
+                                    "enum": [
+                                        "amount",
+                                        "percent"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PrivateNote",
+                        "type": "text",
+                        "label": "Private note"
+                    },
+                    {
+                        "name": "CustomerMemo",
+                        "type": "text",
+                        "label": "Customer memo"
+                    },
+                    {
+                        "name": "TxnDate",
+                        "type": "date",
+                        "label": "Transaction date"
+                    },
+                    {
+                        "name": "PaymentRefNum",
+                        "type": "text",
+                        "label": "Payment reference num"
+                    },
+                    {
+                        "name": "CurrencyRef",
+                        "type": "text",
+                        "label": "Currency"
+                    },
+                    {
+                        "name": "ExchangeRate",
+                        "type": "number",
+                        "label": "Exchange rate"
+                    },
+                    {
+                        "name": "DepartmentRef",
+                        "type": "select",
+                        "label": "Department"
+                    },
+                    {
+                        "name": "ClassRef",
+                        "type": "select",
+                        "label": "Class"
+                    },
+                    {
+                        "name": "BillEmail",
+                        "type": "text",
+                        "label": "Bill email"
+                    },
+                    {
+                        "name": "EmailStatus",
+                        "type": "select",
+                        "label": "Email status",
+                        "validate": {
+                            "enum": [
+                                "NotSet",
+                                "NeedToSend",
+                                "EmailSent"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "CustomField1",
+                        "type": "text",
+                        "label": "Custom field 1"
+                    },
+                    {
+                        "name": "CustomField2",
+                        "type": "text",
+                        "label": "Custom field 2"
+                    },
+                    {
+                        "name": "CustomField3",
+                        "type": "text",
+                        "label": "Custom field 3"
+                    },
+                    {
+                        "name": "ShipDate",
+                        "type": "date",
+                        "label": "Shipping date"
+                    },
+                    {
+                        "name": "ShipMethodRef",
+                        "type": "text",
+                        "label": "Shipping method"
+                    },
+                    {
+                        "name": "TrackingNum",
+                        "type": "text",
+                        "label": "Tracking number"
+                    },
+                    {
+                        "name": "ApplyTaxAfterDiscount",
+                        "type": "boolean",
+                        "label": "Apply tax after discount"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "Id",
+                        "type": "text",
+                        "label": "Sales receipt ID"
+                    },
+                    {
+                        "name": "SyncToken",
+                        "type": "text",
+                        "label": "Sync token"
+                    },
+                    {
+                        "name": "MetaData",
+                        "spec": [
+                            {
+                                "name": "CreateTime",
+                                "type": "date",
+                                "label": "Create time"
+                            },
+                            {
+                                "name": "LastUpdatedTime",
+                                "type": "date",
+                                "label": "Last updated time"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Meta data"
+                    },
+                    {
+                        "name": "CustomField",
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "DefinitionId",
+                                    "type": "text",
+                                    "label": "Definition Id"
+                                },
+                                {
+                                    "name": "Type",
+                                    "type": "text",
+                                    "label": "Type"
+                                },
+                                {
+                                    "name": "StringValue",
+                                    "type": "text",
+                                    "label": "String value"
+                                }
+                            ],
+                            "type": "collection"
+                        },
+                        "type": "array",
+                        "label": "Custom field"
+                    },
+                    {
+                        "name": "DocNumber",
+                        "type": "text",
+                        "label": "Doc number"
+                    },
+                    {
+                        "name": "TxnDate",
+                        "type": "text",
+                        "label": "Transaction date"
+                    },
+                    {
+                        "name": "CurrencyRef",
+                        "spec": [
+                            {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Currency"
+                    },
+                    {
+                        "name": "Line",
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "Id",
+                                    "type": "text",
+                                    "label": "Id"
+                                },
+                                {
+                                    "name": "LineNum",
+                                    "type": "number",
+                                    "label": "Line num"
+                                },
+                                {
+                                    "name": "Amount",
+                                    "type": "number",
+                                    "label": "Amount"
+                                },
+                                {
+                                    "name": "DetailType",
+                                    "type": "text",
+                                    "label": "Detail type"
+                                },
+                                {
+                                    "name": "SalesItemLineDetail",
+                                    "spec": [
+                                        {
+                                            "name": "ItemRef",
+                                            "spec": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "text",
+                                                    "label": "Value"
+                                                },
+                                                {
+                                                    "name": "name",
+                                                    "type": "text",
+                                                    "label": "Name"
+                                                }
+                                            ],
+                                            "type": "collection",
+                                            "label": "Item"
+                                        },
+                                        {
+                                            "name": "TaxCodeRef",
+                                            "spec": [
+                                                {
+                                                    "name": "value",
+                                                    "type": "text",
+                                                    "label": "Value"
+                                                }
+                                            ],
+                                            "type": "collection",
+                                            "label": "Tax code"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Sales item line detail"
+                                }
+                            ],
+                            "type": "collection"
+                        },
+                        "type": "array",
+                        "label": "Lines"
+                    },
+                    {
+                        "name": "CustomerRef",
+                        "spec": [
+                            {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Customer"
+                    },
+                    {
+                        "name": "TotalAmt",
+                        "type": "number",
+                        "label": "Total amount"
+                    },
+                    {
+                        "name": "PrintStatus",
+                        "type": "text",
+                        "label": "Print status"
+                    },
+                    {
+                        "name": "EmailStatus",
+                        "type": "text",
+                        "label": "Email status"
+                    },
+                    {
+                        "name": "Balance",
+                        "type": "number",
+                        "label": "Balance"
+                    },
+                    {
+                        "name": "DepositToAccountRef",
+                        "spec": [
+                            {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Deposit to account"
+                    },
+                    {
+                        "name": "ApplyTaxAfterDiscount",
+                        "label": "Apply tax after discount",
+                        "type": "boolean",
+                        "help": "QuickBooks keeps this only when the invoice includes a discount line. Enable Show advanced parameters and fill __Discount__ (`amount` or `percent`). Do not add a discount under __Lines__.",
+                        "advanced": true
+                    }
+                ]
+            },
+            "onerror": [
+                {
+                    "id": 12,
+                    "module": "google-email:sendAnEmail",
+                    "version": 4,
+                    "parameters": {
+                        "__IMTCONN__": 12077443
+                    },
+                    "mapper": {
+                        "to": [
+                            "alerts@example.com"
+                        ],
+                        "subject": "TAW Alert - QuickBooks Sync Failed",
+                        "bodyType": "collection",
+                        "contents": [
+                            {
+                                "text": "QuickBooks accounting synchronization failed.\n\nStripe Payment ID: {{1.object.id}}\nAmount: {{10.Amount}}\nCurrency: {{1.object.currency}}\nError: {{7.error.message}}\n\nAction required: Check whether the receipt already exists in QuickBooks before retrying.",
+                                "image": {}
+                            }
+                        ]
+                    },
+                    "metadata": {
+                        "designer": {
+                            "x": 1200,
+                            "y": 300
+                        },
+                        "setupValidation": {
+                            "version": 1,
+                            "configuration": "2362a031af0e75b4",
+                            "result": {
+                                "valid": true,
+                                "fields": []
+                            }
+                        },
+                        "restore": {
+                            "parameters": {
+                                "__IMTCONN__": {
+                                    "label": "TAW Gmail Alerts (alerts@example.com)",
+                                    "data": {
+                                        "scoped": "true",
+                                        "connection": "google-email"
+                                    }
+                                }
+                            },
+                            "expect": {
+                                "to": {
+                                    "mode": "chose",
+                                    "items": [
+                                        null
+                                    ]
+                                },
+                                "bodyType": {
+                                    "label": "Collection of contents (text, images, etc.)"
+                                },
+                                "attachments": {
+                                    "mode": "chose"
+                                },
+                                "from": {
+                                    "mode": "chose",
+                                    "label": "Empty"
+                                },
+                                "cc": {
+                                    "mode": "chose"
+                                },
+                                "bcc": {
+                                    "mode": "chose"
+                                },
+                                "emailHeaders": {
+                                    "mode": "chose"
+                                },
+                                "contents": {
+                                    "mode": "chose",
+                                    "items": [
+                                        {
+                                            "image": {
+                                                "collapsed": true
+                                            }
+                                        }
+                                    ]
+                                },
+                                "signature": {
+                                    "mode": "edit"
+                                }
+                            }
+                        },
+                        "parameters": [
+                            {
+                                "name": "__IMTCONN__",
+                                "type": "account:google-email",
+                                "label": "Connection",
+                                "required": true
+                            }
+                        ],
+                        "expect": [
+                            {
+                                "name": "to",
+                                "type": "array",
+                                "label": "To",
+                                "required": true,
+                                "spec": {
+                                    "type": "email",
+                                    "label": "Recipient email address",
+                                    "required": true,
+                                    "validate": true,
+                                    "name": "value"
+                                }
+                            },
+                            {
+                                "name": "subject",
+                                "type": "text",
+                                "label": "Subject"
+                            },
+                            {
+                                "name": "bodyType",
+                                "type": "select",
+                                "label": "Body type",
+                                "required": true,
+                                "validate": {
+                                    "enum": [
+                                        "rawHtml",
+                                        "collection"
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "attachments",
+                                "type": "array",
+                                "label": "Attachments",
+                                "spec": {
+                                    "spec": [
+                                        {
+                                            "name": "filename",
+                                            "type": "filename",
+                                            "label": "File name",
+                                            "required": true,
+                                            "semantic": "file:name"
+                                        },
+                                        {
+                                            "name": "data",
+                                            "type": "buffer",
+                                            "label": "Data",
+                                            "required": true,
+                                            "semantic": "file:data"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Attachment",
+                                    "name": "value"
+                                }
+                            },
+                            {
+                                "name": "from",
+                                "type": "select",
+                                "label": "From"
+                            },
+                            {
+                                "name": "cc",
+                                "type": "array",
+                                "label": "CC recipients",
+                                "spec": {
+                                    "type": "email",
+                                    "label": "Recipient email address",
+                                    "name": "value"
+                                }
+                            },
+                            {
+                                "name": "bcc",
+                                "type": "array",
+                                "label": "BCC recipients",
+                                "spec": {
+                                    "type": "email",
+                                    "label": "Recipient email address",
+                                    "name": "value"
+                                }
+                            },
+                            {
+                                "name": "emailHeaders",
+                                "type": "array",
+                                "label": "Additional email headers",
+                                "spec": {
+                                    "spec": [
+                                        {
+                                            "name": "key",
+                                            "type": "text",
+                                            "label": "Key",
+                                            "required": true
+                                        },
+                                        {
+                                            "name": "value",
+                                            "type": "text",
+                                            "label": "Value"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Email header",
+                                    "name": "value"
+                                }
+                            },
+                            {
+                                "name": "contents",
+                                "type": "array",
+                                "label": "Body contents",
+                                "spec": {
+                                    "spec": [
+                                        {
+                                            "name": "text",
+                                            "type": "text",
+                                            "label": "Text"
+                                        },
+                                        {
+                                            "name": "image",
+                                            "spec": [
+                                                {
+                                                    "name": "filename",
+                                                    "type": "filename",
+                                                    "label": "File name",
+                                                    "semantic": "file:name"
+                                                },
+                                                {
+                                                    "name": "data",
+                                                    "type": "buffer",
+                                                    "label": "Data",
+                                                    "semantic": "file:data"
+                                                },
+                                                {
+                                                    "name": "width",
+                                                    "type": "uinteger",
+                                                    "label": "Width"
+                                                },
+                                                {
+                                                    "name": "height",
+                                                    "type": "uinteger",
+                                                    "label": "Height"
+                                                }
+                                            ],
+                                            "type": "collection",
+                                            "label": "Image"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Content",
+                                    "name": "value"
+                                }
+                            },
+                            {
+                                "name": "signature",
+                                "type": "select",
+                                "label": "Signature content"
+                            }
+                        ]
+                    },
+                    "onerror": [
+                        {
+                            "id": 14,
+                            "module": "builtin:Break",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "retry": false
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1500,
+                                    "y": 300
+                                },
+                                "setupValidation": {
+                                    "version": 1,
+                                    "configuration": "5abecd043d0f00a6",
+                                    "result": {
+                                        "valid": true,
+                                        "fields": []
+                                    }
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "retry": {
+                                            "mode": "chose"
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "retry",
+                                        "type": "boolean",
+                                        "label": "Retry automatically",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "module": "airtable:ActionUpdateRecords",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 12065488
+            },
+            "mapper": {
+                "id": "{{10.id}}",
+                "base": "appkHSvAIeQUYH2xK",
+                "table": "tbl1WmqgxmmMKzo93",
+                "record": {
+                    "fld74zkj7alEdziSl": "{{7.Id}}",
+                    "fldR40D5DHlwBO57D": "Synced"
+                },
+                "typecast": false,
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1200,
+                    "y": 0
+                },
+                "setupValidation": {
+                    "result": {
+                        "valid": true,
+                        "fields": []
+                    },
+                    "version": 1,
+                    "configuration": "376cdaa7e9679657"
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "label": "TAW Invoice Automation"
+                        },
+                        "table": {
+                            "label": "Payments"
+                        },
+                        "record": {
+                            "nested": {
+                                "fldR40D5DHlwBO57D": {
+                                    "mode": "chose",
+                                    "label": "Synced"
+                                },
+                                "fldd9OQy2gA84TGQQ": {
+                                    "mode": "edit"
+                                }
+                            }
+                        },
+                        "typecast": {
+                            "mode": "chose"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable3"
+                            },
+                            "label": "TAW Invoice Automation base (User ID: usriZ2ep8L2w9hQRL)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "typecast",
+                        "type": "boolean",
+                        "label": "Smart links",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                    },
+                    {
+                        "name": "record",
+                        "spec": [
+                            {
+                                "name": "fldYiRJDcI0wHb392",
+                                "type": "text",
+                                "label": "Payment ID"
+                            },
+                            {
+                                "name": "fldPSY6LMPzuoYxDp",
+                                "type": "text",
+                                "label": "Customer Email"
+                            },
+                            {
+                                "name": "fld1CYdANC46sFfAR",
+                                "type": "number",
+                                "label": "Amount"
+                            },
+                            {
+                                "name": "fldKVQeKRvihxZUkU",
+                                "type": "text",
+                                "label": "Currency"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fldd9OQy2gA84TGQQ",
+                                "type": "select",
+                                "label": "Payment Status"
+                            },
+                            {
+                                "mode": "edit",
+                                "name": "fldR40D5DHlwBO57D",
+                                "type": "select",
+                                "label": "Accounting Status"
+                            },
+                            {
+                                "name": "fld74zkj7alEdziSl",
+                                "type": "text",
+                                "label": "Accounting Record ID"
+                            },
+                            {
+                                "name": "fldSXhLovULW8zpxQ",
+                                "time": true,
+                                "type": "date",
+                                "label": "Created At"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Record"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created time"
+                    },
+                    {
+                        "name": "Payment ID",
+                        "type": "text",
+                        "label": "Payment ID"
+                    },
+                    {
+                        "name": "Customer Email",
+                        "type": "text",
+                        "label": "Customer Email"
+                    },
+                    {
+                        "name": "Amount",
+                        "type": "number",
+                        "label": "Amount"
+                    },
+                    {
+                        "name": "Currency",
+                        "type": "text",
+                        "label": "Currency"
+                    },
+                    {
+                        "name": "Payment Status",
+                        "type": "text",
+                        "label": "Payment Status"
+                    },
+                    {
+                        "name": "Accounting Status",
+                        "type": "text",
+                        "label": "Accounting Status"
+                    },
+                    {
+                        "name": "Accounting Record ID",
+                        "type": "text",
+                        "label": "Accounting Record ID"
+                    },
+                    {
+                        "name": "Created At",
+                        "time": true,
+                        "type": "date",
+                        "label": "Created At"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": true,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": true,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us2.make.com",
+        "notes": []
+    }
+}
